@@ -11,6 +11,7 @@ body {
 	width: 100vw;
 	margin: 0px 0px 0px 0px;
 	background-color: #443a99;
+	z-index: 1;
 	/* height: 5.2em; */
 }
 
@@ -43,13 +44,13 @@ body {
 	border-radius: 1px;
 }
 
-.navbar .navbar-burger {
-	/*  */
+/* .navbar .navbar-burger {
+
 }
 
 .navbar .navbar-burger .navbar-item {
-	/*  */
-}
+
+} */
 
 .navbar #logo {
 	display: block;
@@ -66,13 +67,14 @@ body {
 
 .menu {
 	display: flex;
+	position: fixed;
 	flex-direction: column;
 	font-size: 1.4em;
 	width: 5em;
 	height: 10em;
 	background-color: #443a99;
 	border: 2px solid #443a99;
-	margin-left: auto;
+	margin-left: 98.58vw;
 	margin-right: 0px;
 	margin-top: -13px;
 	justify-items: center;
@@ -86,4 +88,16 @@ body {
 	font-weight: bolder;
 	color: #37e680;
 	text-decoration: none;
+}
+
+.menu-transition-in {
+	transform-origin: 0% 0%;
+	transform: translate(-107.2%, 0);
+	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+.menu-transition-out {
+	transform-origin: 0% 0%;
+	transform: translate(0%, 0);
+	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }

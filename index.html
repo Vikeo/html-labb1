@@ -23,7 +23,7 @@
 
         <!-- Hamburgaren kanske borde vara utanför denna flex för att få den till högra sidan -->
 
-        <div onclick="toggleMenu();" id="menuToggle" class="navbar-item">
+        <div onclick="toggleMenu(document.getElementById('menu'));" id="menuToggle" class="navbar-item" data-state="">
             <span></span>
             <span></span>
             <span></span>
@@ -33,7 +33,11 @@
 
     <div class="content">
         <div id="menu-container">
-
+            <div id="menu" class="menu" data-state="inactive">
+                <a href="./index.html" class="menu-item">Hem</a>
+                <a href="./pages/courses.html" class="menu-item">Kurser</a>
+                <a href="#admin" class="menu-item">Admin</a>
+            </div>
         </div>
         <h1>Välkommen!</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est et quisquam sed consectetur eius eos ipsam
