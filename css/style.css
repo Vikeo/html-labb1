@@ -122,4 +122,12 @@ body {
 		opacity: 100%;
 		pointer-events: all;
 	}
+
+	.navbar #logo {
+		display: block;
+		width: 220px;
+		padding: 0em 0.5em 0em 0.5em;
+		justify-self: center;
+		align-self: center;
+	}
 }
