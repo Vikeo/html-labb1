@@ -32,6 +32,8 @@ body {
 	cursor: pointer;
 	align-self: center;
 	margin-left: auto;
+	opacity: 0%;
+	pointer-events: none;
 }
 
 #menuToggle span {
@@ -100,4 +102,30 @@ body {
 	transform-origin: 0% 0%;
 	transform: translate(0%, 0);
 	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+/* Gömmer det som ska som bara ska synas i desktopläge*/
+.desktop {
+	position: absolute;
+	opacity: 0%;
+	z-index: -3;
+	pointer-events: none;
+}
+
+/* Visas på desktop */
+@media (min-width: 590px) {
+	.desktop {
+		position: relative;
+		opacity: 100%;
+		z-index: 0;
+		pointer-events: all;
+	}
+}
+
+/* Visas på mobil */
+@media (max-width: 589px) {
+	#menuToggle {
+		opacity: 100%;
+		pointer-events: all;
+	}
 }
