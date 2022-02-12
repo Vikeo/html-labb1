@@ -28,7 +28,7 @@ body {
 	color: #37e680;
 }
 
-#menuToggle {
+#hamburger-toggle {
 	cursor: pointer;
 	align-self: center;
 	margin-left: auto;
@@ -36,23 +36,17 @@ body {
 	pointer-events: none;
 }
 
-#menuToggle span {
+#hamburger-toggle span {
 	display: block;
 	width: 33px;
 	height: 4px;
 	margin-bottom: 5px;
 	position: relative;
-	background: #c0bdbd;
-	border-radius: 1px;
+	background: #37e680;
+	border-radius: 5px;
+
+	/* TODO lägg till animation som ändrar formen till ett X när man klickar på menyn. */
 }
-
-/* .navbar .navbar-burger {
-
-}
-
-.navbar .navbar-burger .navbar-item {
-
-} */
 
 .navbar #logo {
 	display: block;
@@ -67,7 +61,7 @@ body {
 	margin: 6em 0 0 20px;
 }
 
-.menu {
+.hamburger-menu {
 	display: flex;
 	position: fixed;
 	flex-direction: column;
@@ -84,7 +78,7 @@ body {
 	box-shadow: -1px 1px 5px 3px #231e5075;
 }
 
-.menu-item {
+.hamburger-menu-item {
 	margin-left: 0.7em;
 	font-family: "Chakra Petch", sans-serif;
 	font-weight: bolder;
@@ -124,7 +118,7 @@ body {
 
 /* Visas på mobil */
 @media (max-width: 589px) {
-	#menuToggle {
+	#hamburger-toggle {
 		opacity: 100%;
 		pointer-events: all;
 	}
