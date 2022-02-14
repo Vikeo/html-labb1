@@ -20,7 +20,7 @@ body {
 	font-weight: bolder;
 	font-size: 1.4em;
 	background-color: #443a99;
-	margin: 1em 1.5em 1em 0px;
+	margin: 1em 1.5em 1em 0px; /* TODO: Ändra till gap*/
 	padding: 0em 0em 0em 0em;
 	justify-self: center;
 	align-self: center;
