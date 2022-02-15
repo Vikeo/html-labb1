@@ -5,18 +5,31 @@ class Course {
 		this.description = description;
 		this.descriptionDetailed = descriptionDetailed;
 		this.image = image;
+		//TODO Lägg till längd på kurs.
 	}
 }
 
-let cart = [];
-let courses = [];
+const cart = [];
+const courses = [];
 
 courses.push(
-	new Course("SS22HT", "Sälkurs", "hejsan", "hejsanhejsan", "./images/seal.jpg")
+	new Course(
+		"S22HT",
+		"Sälkurs",
+		"Lär dig om västkustens alla olika sälar i denna sälkurs! Här kommer du få rädda, mata och klappa massor av fina och tjocka sälar.",
+		"hejsanhejsan",
+		"./images/seal.jpg"
+	)
 );
 
 courses.push(
-	new Course(13, "Hjälpkurs", "hejsan", "hejsanhejsan", "./images/seal.jpg")
+	new Course(
+		"H22HT",
+		"Hjälpkurs",
+		"hejsan",
+		"hejsanhejsan",
+		"./images/seal.jpg"
+	)
 );
 
 function toggleMenu(menu) {
@@ -42,7 +55,7 @@ function menuSlideOut(menu) {
 
 function addCourse(id, title, description, descriptionDetailed, image) {
 	//Ta in info, lägg till i en ny Course.
-	let newCourse = new Course(
+	const newCourse = new Course(
 		id,
 		title,
 		description,
@@ -55,12 +68,10 @@ function addCourse(id, title, description, descriptionDetailed, image) {
 
 function printCourseCards(coursesArray = []) {
 	coursesArray = courses;
-
-	//console.log(coursesArray);
+	const coursesHTML = document.getElementById("courses-list");
+	coursesHTML.innerHTML = ``;
 
 	coursesArray.forEach((course) => {
-		coursesHTML = document.getElementById("courses-list");
-
 		const div = document.createElement("div");
 		const img = document.createElement("img");
 		const h1 = document.createElement("h1");
@@ -80,7 +91,7 @@ function printCourseCards(coursesArray = []) {
 		button.innerText = "Lägg till";
 
 		//Lägger till funktionen för att lägga till boken i kundvagnen.
-		button.setAttribute("onclick", "addCourseToCart(" + course.id + ", cart);");
+		button.setAttribute("onclick", `addCourseToCart("${course.id}")`);
 
 		div.appendChild(img);
 		div.appendChild(h1);
@@ -92,7 +103,7 @@ function printCourseCards(coursesArray = []) {
 }
 
 //Hittar kollar om ID:t på kurs-knappen man klickade på finns i en av objekten i courses arrayen, sen lägger till.
-function addCourseToCart(courseId, cart) {
+function addCourseToCart(courseId) {
 	console.log(courses);
 
 	const course = courses.find((el) => el.id === courseId);
