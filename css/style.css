@@ -3,6 +3,19 @@ body {
 	margin: 0px 0px 0px 0px;
 }
 
+.content {
+	/* margin-top: 83.45px; */
+	margin: 6em 0 0 20px;
+}
+
+#courses-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+/*#region Things in navbar*/
+
 .navbar {
 	display: flex;
 	flex-direction: row;
@@ -28,10 +41,12 @@ body {
 	color: #37e680;
 }
 
+/* Kanske ändra så att kundvagnen är till höger */
+
 #hamburger-toggle {
 	cursor: pointer;
 	align-self: center;
-	margin-left: auto;
+	margin-left: 0px;
 	opacity: 0%;
 	pointer-events: none;
 }
@@ -56,16 +71,22 @@ body {
 	align-self: center;
 }
 
-.content {
-	/* margin-top: 83.45px; */
-	margin: 6em 0 0 20px;
+#cart-toggle {
+	cursor: pointer;
+	align-self: right;
+	margin-left: auto;
 }
 
-#courses-list {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+#cart-icon {
+	display: block;
+	width: auto;
+	height: 30px;
+	color: #37e680;
 }
+
+/*#endregion Things in navbar*/
+
+/*#region Card css*/
 
 .card {
 	display: grid;
@@ -126,6 +147,9 @@ body {
 	transform: scale(1.06);
 }
 
+/*#endregion Card css*/
+
+/*#region Mobile Hamburger menu css*/
 .hamburger-menu {
 	display: flex;
 	position: fixed;
@@ -162,6 +186,24 @@ body {
 	transform: translate(0%, 0);
 	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
+
+/*#endregion Mobile Hamburger menu css*/
+
+/*#region Card-items */
+#cart-container {
+	border: 1px solid black;
+	width: 13em;
+	height: auto;
+}
+#cart {
+	list-style: none;
+}
+
+.cart-item {
+	text-decoration: none;
+	list-style: none;
+}
+/*#endregion Card-items */
 
 /* Gömmer det som ska som bara ska synas i desktopläge*/
 .desktop {

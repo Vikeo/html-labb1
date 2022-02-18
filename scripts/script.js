@@ -9,9 +9,17 @@ class Course {
 	}
 }
 
+// class CartItem {
+// 	constructor(course, amount) {
+// 		this.course = course;
+// 		this.amount = amount;
+// 	}
+// }
+
 const cart = [];
 const courses = [];
 
+//Lägger till temp kurser.
 courses.push(
 	new Course(
 		"S22HT",
@@ -21,7 +29,6 @@ courses.push(
 		"./images/seal.jpg"
 	)
 );
-
 courses.push(
 	new Course(
 		"H22HT",
@@ -40,6 +47,10 @@ function toggleMenu(menu) {
 		console.log("unslide menu");
 		menuSlideOut(menu);
 	}
+}
+
+function toggleCart(cart) {
+	//show/hide cart
 }
 
 function menuSlideIn(menu) {
@@ -104,12 +115,32 @@ function printCourseCards(coursesArray = []) {
 
 //Hittar kollar om ID:t på kurs-knappen man klickade på finns i en av objekten i courses arrayen, sen lägger till.
 function addCourseToCart(courseId) {
-	console.log(courses);
+	console.log(cart);
 
 	const course = courses.find((el) => el.id === courseId);
 
+	if (cart.includes(course)) {
+		console.log("finns redan");
+		return;
+	}
+	console.log("finns inte");
+
 	cart.push(course);
 	console.log(`${course.title} tillagd`);
+
+	updateCart();
+}
+
+function updateCart() {
+	const cartHtml = document.getElementById("cart");
+	cartHtml.innerHTML = ``;
+
+	cart.forEach((cartItem) => {
+		const div = document.createElement("div");
+		div.classList.add("cart-item");
+		div.innerText = `${cartItem.title} (${cartItem.id})`;
+		cartHtml.appendChild(div);
+	});
 }
 
 /* <div class="card">

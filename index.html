@@ -21,6 +21,10 @@
         <a href="./pages/courses.html" class="navbar-item desktop">Kurser</a>
         <a href="" class="navbar-item desktop">Admin</a>
 
+        <div onclick="toggleCart()" id="cart-toggle" class="navbar-item">
+            <img src="./images/cart-icon.svg" alt="cart icon" id="cart-icon">
+        </div>
+
         <div onclick="toggleMenu(document.getElementById('hamburger-menu'));" id="hamburger-toggle"
             class="navbar-item mobile" data-state="">
             <span></span>
@@ -38,6 +42,14 @@
                 <a href="#admin" class="hamburger-menu-item">Admin</a>
             </div>
         </div>
+
+        <div id="cart-container">
+            <ul id="cart">
+                <div>Kundvagnen är tom...</div>
+            </ul>
+        </div>
+
+
         <button onclick="printCourseCards()">Ladda in riktigta kursers</button>
         <h1>Välkommen!</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est et quisquam sed consectetur eius eos ipsam
