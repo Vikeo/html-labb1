@@ -1,9 +1,8 @@
 class Course {
-	constructor(id, title, description, descriptionDetailed, image) {
+	constructor(id, title, description, image) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
-		this.descriptionDetailed = descriptionDetailed;
 		this.image = image;
 		//TODO Lägg till längd på kurs.
 	}
@@ -25,19 +24,10 @@ courses.push(
 		"S22HT",
 		"Sälkurs",
 		"Lär dig om västkustens alla olika sälar i denna sälkurs! Här kommer du få rädda, mata och klappa massor av fina och tjocka sälar.",
-		"hejsanhejsan",
 		"./images/seal.jpg"
 	)
 );
-courses.push(
-	new Course(
-		"H22HT",
-		"Hjälpkurs",
-		"hejsan",
-		"hejsanhejsan",
-		"./images/seal.jpg"
-	)
-);
+courses.push(new Course("H22HT", "Hjälpkurs", "hejsan", "./images/seal.jpg"));
 
 function toggleMenu(menu) {
 	if (menu.dataset.state == "inactive") {
@@ -50,7 +40,7 @@ function toggleMenu(menu) {
 }
 
 function toggleCart(cart) {
-	//show/hide cart
+	//TODO show/hide cart
 }
 
 function menuSlideIn(menu) {
@@ -64,15 +54,37 @@ function menuSlideOut(menu) {
 	menu.dataset.state = "inactive";
 }
 
-function addCourse(id, title, description, descriptionDetailed, image) {
-	//Ta in info, lägg till i en ny Course.
-	const newCourse = new Course(
-		id,
-		title,
-		description,
-		descriptionDetailed,
-		image
+//TODO Extremt redundant funktion tycker jag, men osäker på hur man ska göra på ett annat sätt just nu.
+function submitCourseForm() {
+	addCourse(
+		(id = document.getElementById("course-id").value),
+		(title = document.getElementById("course-title").value),
+		(description = document.getElementById("course-description").value),
+		(image = document.getElementById("course-image").value)
 	);
+}
+
+function addCourse(id, title, description, image) {
+	//Ta in info, lägg till i en ny Course.
+	let alreadyExists = false;
+	const newCourse = new Course(id, title, description, image);
+	//TODO Finns nog ett bättre sätt att hoppa ut ur en funktion från en forEach än att använda en bool.
+	courses.forEach((course) => {
+		if (course.id == newCourse.id) {
+			alreadyExists = true;
+			return;
+		}
+	});
+
+	if (alreadyExists) {
+		return;
+	}
+	courses.push(newCourse);
+	console.log(courses);
+}
+
+function userAddNewCourse(id, title, description, image) {
+	const newCourse = new Course(id, title, description, image);
 	courses.push(newCourse);
 	console.log(courses);
 }
@@ -113,7 +125,7 @@ function printCourseCards(coursesArray = []) {
 	});
 }
 
-//Hittar kollar om ID:t på kurs-knappen man klickade på finns i en av objekten i courses arrayen, sen lägger till.
+//Kollar om ID:t på kurs-knappen man klickade på finns i en av objekten i courses arrayen, sen lägger till.
 function addCourseToCart(courseId) {
 	console.log(cart);
 
@@ -131,15 +143,35 @@ function addCourseToCart(courseId) {
 	updateCart();
 }
 
+function removeCourseFromCart(cartItemId) {
+	const itemToRemove = cart.find((el) => el.id === cartItemId);
+
+	console.log(cart.indexOf(itemToRemove));
+
+	cart.splice(cart.indexOf(itemToRemove), 1);
+
+	updateCart();
+}
+
 function updateCart() {
 	const cartHtml = document.getElementById("cart");
 	cartHtml.innerHTML = ``;
+
+	if (cart.length <= 0) {
+		const tempDiv = document.createElement("div");
+		tempDiv.innerText = "Kundvagnen är tom...";
+		cartHtml.appendChild(tempDiv);
+	}
 
 	cart.forEach((cartItem) => {
 		const div = document.createElement("div");
 		div.classList.add("cart-item");
 		div.innerText = `${cartItem.title} (${cartItem.id})`;
+		const X = document.createElement("button");
+		X.innerText = "X";
+		X.setAttribute("onclick", `removeCourseFromCart("${cartItem.id}")`);
 		cartHtml.appendChild(div);
+		cartHtml.appendChild(X);
 	});
 }
 
