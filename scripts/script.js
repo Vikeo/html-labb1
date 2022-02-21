@@ -86,6 +86,11 @@ function submitCourseForm() {
 
 function addCourse(id, title, description, image) {
 	//Ta in info, lägg till i en ny Course.
+	if (id == "") {
+		window.alert("Du måste fylla i kurs ID.");
+		return;
+	}
+
 	let alreadyExists = false;
 	const newCourse = new Course(id, title, description, image);
 	//TODO Finns nog ett bättre sätt att hoppa ut ur en funktion från en forEach än att använda en bool.
@@ -97,16 +102,12 @@ function addCourse(id, title, description, image) {
 	});
 
 	if (alreadyExists) {
+		window.alert("Kurs ID måste vara unikt.");
 		return;
 	}
 	courses.push(newCourse);
 	console.log(courses);
-}
-
-function userAddNewCourse(id, title, description, image) {
-	const newCourse = new Course(id, title, description, image);
-	courses.push(newCourse);
-	console.log(courses);
+	printCourseCards();
 }
 
 function printCourseCards(coursesArray = []) {
