@@ -205,6 +205,22 @@ body {
 }
 /*#endregion Card-items */
 
+/*#region Modal */
+.modal {
+}
+
+#modal-course-form {
+	background-color: #443a99;
+	width: 200px;
+	/* TODO Fixa utseende */
+	padding-left: 20px;
+	display: none;
+}
+
+#modal-button {
+}
+/*end#region Modal */
+
 /* Gömmer det som ska som bara ska synas i desktopläge*/
 .desktop {
 	position: absolute;

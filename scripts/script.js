@@ -43,6 +43,16 @@ function toggleCart(cart) {
 	//TODO show/hide cart
 }
 
+function toggleModal(modal) {
+	if (modal.dataset.state !== "active") {
+		modal.dataset.state = "active";
+		modal.style.display = "block";
+	} else {
+		modal.dataset.state = "inactive";
+		modal.style.display = "none";
+	}
+}
+
 function menuSlideIn(menu) {
 	menu.classList.remove("menu-transition-out");
 	menu.classList.add("menu-transition-in");
