@@ -3,7 +3,7 @@ body {
 	margin: 0px 0px 0px 0px;
 }
 
-.content {
+#content {
 	/* margin-top: 83.45px; */
 	margin: 6em 0 0 20px;
 }
@@ -155,11 +155,11 @@ body {
 	position: fixed;
 	flex-direction: column;
 	font-size: 1.4em;
-	width: 5em;
+	width: 6em;
 	height: 10em;
 	background-color: #443a99;
 	border: 2px solid #443a99;
-	margin-left: 98.58vw;
+	margin-left: 102vw;
 	margin-right: 0px;
 	margin-top: -13px;
 	justify-items: center;
@@ -191,6 +191,7 @@ body {
 
 /*#region Cart-items */
 #cart-container {
+	margin: 6em 0 0 20px;
 	display: block;
 	position: fixed;
 	border: 1px solid black;
@@ -220,6 +221,11 @@ body {
 	/* TODO Fixa utseende */
 	padding: 20px;
 	display: none;
+}
+
+#modal-button {
+	background-color: #443a99;
+	color: #37e680;
 }
 /*#endregion Modal */
 
@@ -252,9 +258,15 @@ body {
 		/* Ändra till display:none / display:??? ? */
 	}
 
+	.navbar {
+		/* Vet inte om det här är bad practice eller inte, men sätter detta
+		till ett specifikt värde så att det inte skalas tillsammans med loggan. */
+		height: 83.45px;
+	}
+
 	.navbar #logo {
 		display: block;
-		width: 220px;
+		width: 175px;
 		padding: 0em 0.5em 0em 0.5em;
 		justify-self: center;
 		align-self: center;

@@ -17,9 +17,9 @@
         <a href="" class="navbar-item">
             <img src="./images/logo.png" alt="WestCoast Education logga" id="logo">
         </a>
-        <a href="./index.html" class="navbar-item desktop" id="hej">Hem</a>
-        <a href="./pages/courses.html" class="navbar-item desktop">Kurser</a>
-        <a href="" class="navbar-item desktop">Admin</a>
+        <div onclick="navigateToHome()" class="navbar-item desktop">Hem</div>
+        <div onclick="navigateToCourses()" class="navbar-item desktop">Kurser</div>
+        <div onclick="navigateToAdmin()" class="navbar-item desktop">Admin</div>
 
         <div onclick="toggleCart(document.getElementById('cart-container'))" id="cart-toggle" class="navbar-item">
             <img src="./images/cart-icon.svg" alt="cart icon" id="cart-icon">
@@ -33,22 +33,28 @@
         </div>
     </div>
 
-
-    <div class="content">
-
-
-        <div id="hamburger-menu-container">
-            <div id="hamburger-menu" class="hamburger-menu" data-state="slide-out">
-                <a href="./index.html" class="hamburger-menu-item">Hem</a>
-                <a href="./pages/courses.html" class="hamburger-menu-item">Kurser</a>
-                <a href="#admin" class="hamburger-menu-item">Admin</a>
-            </div>
+    <div id="hamburger-menu-container">
+        <div id="hamburger-menu" class="hamburger-menu" data-state="slide-out">
+            <div onclick="navigateToHome()" class="hamburger-menu-item">Hem</div>
+            <div onclick="navigateToCourses()" class="hamburger-menu-item">Kurser</div>
+            <div onclick="navigateToAdmin()" class="hamburger-menu-item">Admin</div>
         </div>
+    </div>
 
-        <div id="cart-container" data-state="active">
-            <ul id="cart">
-                <div>Kundvagnen är tom...</div>
-            </ul>
+    <div id="cart-container" data-state="active">
+        <ul id="cart">
+            <div>Kundvagnen är tom...</div>
+        </ul>
+    </div>
+
+    <div id="content">
+        <h1>Välkommen!</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est et quisquam sed consectetur eius eos ipsam
+            repudiandae explicabo totam?
+        </p>
+
+        <div id="courses-list">
+
         </div>
 
         <button id="modal-button" onclick="toggleModal(document.getElementById('modal-course-form'))">Öppna
@@ -74,34 +80,6 @@
             </form>
         </div>
 
-        <h1>Välkommen!</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est et quisquam sed consectetur eius eos ipsam
-            repudiandae explicabo totam?
-        </p>
-
-        <div id="courses-list">
-            <div class="card">
-                <img class="card-image" src="./images/seal.jpg" alt="card-image">
-                <h1 class="card-title">Sälkurs (S22HT)</h1>
-                <p class="card-text">Lär dig om västkustens alla olika sälar i denna sälkurs! Här kommer du få rädda,
-                    mata
-                    och klappa massor av fina och tjocka sälar.
-                </p>
-                <button onclick="console.log('hessssj1')" class="card-add-button">Lägg till</button>
-            </div>
-        </div>
-
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
         <h1>1</h1>
         <h1>1</h1>
         <h1>1</h1>
@@ -122,6 +100,7 @@
     </div>
 
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/pages.js"></script>
 </body>
 
 </html>
