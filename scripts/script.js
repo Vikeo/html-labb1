@@ -30,17 +30,27 @@ courses.push(
 courses.push(new Course("H22HT", "Hjälpkurs", "hejsan", "./images/seal.jpg"));
 
 function toggleMenu(menu) {
-	if (menu.dataset.state == "inactive") {
+	if (menu.dataset.state == "slide-out") {
 		console.log("slide menu");
 		menuSlideIn(menu);
+		//menuSlideIn(document.getElementById("cart-container"));
 	} else {
 		console.log("unslide menu");
 		menuSlideOut(menu);
+		//menuSlideIn(document.getElementById("cart-container"));
 	}
 }
 
 function toggleCart(cart) {
 	//TODO show/hide cart
+
+	if (cart.dataset.state !== "active") {
+		cart.dataset.state = "active";
+		cart.style.display = "block";
+	} else {
+		cart.dataset.state = "inactive";
+		cart.style.display = "none";
+	}
 }
 
 function toggleModal(modal) {
@@ -56,12 +66,12 @@ function toggleModal(modal) {
 function menuSlideIn(menu) {
 	menu.classList.remove("menu-transition-out");
 	menu.classList.add("menu-transition-in");
-	menu.dataset.state = "active";
+	menu.dataset.state = "slide-in";
 }
 function menuSlideOut(menu) {
 	menu.classList.add("menu-transition-out");
 	menu.classList.remove("menu-transition-in");
-	menu.dataset.state = "inactive";
+	menu.dataset.state = "slide-out";
 }
 
 //TODO Extremt redundant funktion tycker jag, men osäker på hur man ska göra på ett annat sätt just nu.
@@ -194,3 +204,5 @@ function updateCart() {
     </p>
     <button class="card-add-button ">Lägg till</button>
 </div> */
+
+printCourseCards();

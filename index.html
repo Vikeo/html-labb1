@@ -21,7 +21,7 @@
         <a href="./pages/courses.html" class="navbar-item desktop">Kurser</a>
         <a href="" class="navbar-item desktop">Admin</a>
 
-        <div onclick="toggleCart()" id="cart-toggle" class="navbar-item">
+        <div onclick="toggleCart(document.getElementById('cart-container'))" id="cart-toggle" class="navbar-item">
             <img src="./images/cart-icon.svg" alt="cart icon" id="cart-icon">
         </div>
 
@@ -35,15 +35,17 @@
 
 
     <div class="content">
+
+
         <div id="hamburger-menu-container">
-            <div id="hamburger-menu" class="hamburger-menu" data-state="inactive">
+            <div id="hamburger-menu" class="hamburger-menu" data-state="slide-out">
                 <a href="./index.html" class="hamburger-menu-item">Hem</a>
                 <a href="./pages/courses.html" class="hamburger-menu-item">Kurser</a>
                 <a href="#admin" class="hamburger-menu-item">Admin</a>
             </div>
         </div>
 
-        <div id="cart-container">
+        <div id="cart-container" data-state="active">
             <ul id="cart">
                 <div>Kundvagnen är tom...</div>
             </ul>
@@ -72,7 +74,6 @@
             </form>
         </div>
 
-        <button onclick="printCourseCards()">Ladda in riktigta kursers</button>
         <h1>Välkommen!</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est et quisquam sed consectetur eius eos ipsam
             repudiandae explicabo totam?
