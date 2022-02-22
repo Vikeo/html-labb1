@@ -14,6 +14,9 @@ body {
 	justify-content: center;
 }
 
+#student-image {
+	width: 700px;
+}
 /*#region Things in navbar*/
 
 .navbar {
@@ -24,7 +27,7 @@ body {
 	width: 100vw;
 	margin: 0px 0px 0px 0px;
 	background-color: #443a99;
-	z-index: 1;
+	z-index: 5;
 	/* height: 5.2em; */
 }
 
@@ -39,6 +42,7 @@ body {
 	align-self: center;
 	text-decoration: none;
 	color: #37e680;
+	cursor: pointer;
 }
 
 /* Kanske ändra så att kundvagnen är till höger */
@@ -165,6 +169,7 @@ body {
 	justify-items: center;
 	align-items: flex-start;
 	box-shadow: -1px 1px 5px 3px #231e5075;
+	z-index: 2;
 }
 
 .hamburger-menu-item {
@@ -173,6 +178,7 @@ body {
 	font-weight: bolder;
 	color: #37e680;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .menu-transition-in {
@@ -194,12 +200,13 @@ body {
 	margin: 6em 0 0 20px;
 	display: block;
 	position: fixed;
-	border: 1px solid black;
+	background-color: #8e87d1;
 	width: 13em;
 	height: auto;
-	right: 95px;
+	right: 117px;
 	margin-top: -14px;
 	font-size: 1em;
+	z-index: 1;
 }
 
 #cart {
@@ -213,19 +220,42 @@ body {
 /*#endregion Card-items */
 
 /*#region Modal */
-#modal-course-form {
-	z-index: 2;
-	position: fixed;
-	background-color: #8e87d1;
-	width: 200px;
-	/* TODO Fixa utseende */
-	padding: 20px;
+
+#modal-container {
 	display: none;
+	position: fixed;
+	padding-top: 150px;
+	width: 100vw;
+	height: 100vh;
+	top: 0%;
+	left: 0%;
+	background-color: #00000050;
+	z-index: 10;
+	text-align: center;
+}
+
+#modal-course-form {
+	border-radius: 3%;
+	z-index: 11;
+	background-color: #ffffff;
+	width: 14em;
+	margin: auto;
+	padding: 20px;
+	/* TODO Fixa utseende */
 }
 
 #modal-button {
 	background-color: #443a99;
 	color: #37e680;
+	font-family: "Chakra Petch", sans-serif;
+	border-radius: 3px;
+	font-size: 1.5em;
+	padding: 0.7em;
+}
+
+#course-description {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 0.9em;
 }
 /*#endregion Modal */
 
