@@ -1,0 +1,18 @@
+[
+	{
+		"id": "S22HT",
+		"title": "Sälkurs",
+		"description": "Lär dig om västkustens alla olika sälar i denna sälkurs! Här kommer du få rädda, mata och klappa massor av fina och tjocka sälar.",
+		"image": "./images/seal.jpg",
+		"length": "3 months",
+		"price": "30kr"
+	},
+	{
+		"id": "H22HT",
+		"title": "Hjälpkurs",
+		"description": "VI hjälper DIG med ALLT! Wow va?!",
+		"image": "./images/seal.jpg",
+		"length": "1 week",
+		"price": "9999kr"
+	}
+]

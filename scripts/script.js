@@ -1,43 +1,41 @@
 class Course {
-	constructor(id, title, description, image) {
+	constructor(id, title, description, image, length, price) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.image = image;
-		//TODO Lägg till längd på kurs.
+		this.length = length;
+		this.price = price;
 	}
 }
-
-// class CartItem {
-// 	constructor(course, amount) {
-// 		this.course = course;
-// 		this.amount = amount;
-// 	}
-// }
 
 const cart = [];
 const courses = [];
 
-//Lägger till temp kurser.
-courses.push(
-	new Course(
-		"S22HT",
-		"Sälkurs",
-		"Lär dig om västkustens alla olika sälar i denna sälkurs! Här kommer du få rädda, mata och klappa massor av fina och tjocka sälar.",
-		"./images/seal.jpg"
-	)
-);
-courses.push(new Course("H22HT", "Hjälpkurs", "hejsan", "./images/seal.jpg"));
+//Hämtar de kurser som finns från början från en json-fil
+fetch("courses.json")
+	.then((response) => response.json())
+	.then((data) => {
+		data.forEach((el) => {
+			const course = new Course(
+				el.id,
+				el.title,
+				el.description,
+				el.image,
+				el.length,
+				el.price
+			);
+			courses.push(course);
+		});
+	});
 
 function toggleMenu(menu) {
 	if (menu.dataset.state == "slide-out") {
 		console.log("slide menu");
 		menuSlideIn(menu);
-		//menuSlideIn(document.getElementById("cart-container"));
 	} else {
 		console.log("unslide menu");
 		menuSlideOut(menu);
-		//menuSlideIn(document.getElementById("cart-container"));
 	}
 }
 
@@ -87,7 +85,6 @@ function submitCourseForm() {
 function addCourse(id, title, description, image) {
 	//Ta in info, lägg till i en ny Course.
 	if (id == "") {
-		window.alert("Du måste fylla i kurs ID.");
 		return;
 	}
 
@@ -108,11 +105,17 @@ function addCourse(id, title, description, image) {
 	courses.push(newCourse);
 	console.log(courses);
 	printCourseCards();
+	updateEditor();
 }
 
 function printCourseCards(coursesArray = []) {
 	coursesArray = courses;
 	const coursesHTML = document.getElementById("courses-list");
+
+	if (coursesHTML == null) {
+		return;
+	}
+
 	coursesHTML.innerHTML = ``;
 
 	coursesArray.forEach((course) => {
@@ -166,22 +169,32 @@ function addCourseToCart(courseId) {
 
 function removeCourseFromCart(cartItemId) {
 	const itemToRemove = cart.find((el) => el.id === cartItemId);
-
-	console.log(cart.indexOf(itemToRemove));
-
 	cart.splice(cart.indexOf(itemToRemove), 1);
-
 	updateCart();
 }
 
+function removeCourseFromCourses(courseId) {
+	const courseToRemove = courses.find((el) => el.id === courseId);
+
+	console.log(courses.indexOf(courseToRemove));
+
+	courses.splice(courses.indexOf(courseToRemove), 1);
+
+	updateEditor();
+}
+
 function updateCart() {
+	let itemCounter = 0;
+	const cartItemCounter = document.getElementById("cart-items-counter");
 	const cartHtml = document.getElementById("cart");
 	cartHtml.innerHTML = ``;
 
 	if (cart.length <= 0) {
+		cartItemCounter.style.display = "none";
 		const tempDiv = document.createElement("div");
 		tempDiv.innerText = "Kundvagnen är tom...";
 		cartHtml.appendChild(tempDiv);
+		return;
 	}
 
 	cart.forEach((cartItem) => {
@@ -192,18 +205,47 @@ function updateCart() {
 		X.innerText = "X";
 		X.setAttribute("onclick", `removeCourseFromCart("${cartItem.id}")`);
 		cartHtml.appendChild(div);
-		cartHtml.appendChild(X);
+		div.appendChild(X);
+		itemCounter++;
 	});
+
+	cartItemCounter.style.display = "flex";
+	cartItemCounter.innerHTML = itemCounter;
 }
 
-/* <div class="card">
-    <img class="card-image" src="./images/seal.jpg" alt="card-image">
-    <h1 class="card-title">Sälkurs (S22HT)</h1>
-    <p class="card-text">Lär dig om västkustens alla olika sälar i denna sälkurs! Här kommer du få rädda,
-        mata
-        och klappa massor av fina och tjocka sälar.
-    </p>
-    <button class="card-add-button ">Lägg till</button>
-</div> */
+function updateEditor() {
+	const editorHTML = document.getElementById("modal-course-editor");
+	editorHTML.innerHTML = ``;
 
+	if (courses.length <= 0) {
+		const tempDiv = document.createElement("div");
+		tempDiv.innerText =
+			"Här fanns det tydligen inga kurser... Testa och lägga till någon!";
+		editorHTML.appendChild(tempDiv);
+	}
+	console.log("111");
+
+	courses.forEach((course) => {
+		const div = document.createElement("div");
+		div.classList.add("course-editor-item");
+		div.innerText = `${course.title} (${course.id})`;
+		const X = document.createElement("button");
+		X.innerText = "X";
+		X.setAttribute(
+			"onclick",
+			`if (confirm("Are you sure?")) {removeCourseFromCourses("${course.id}"); updateEditor();}`
+		);
+
+		editorHTML.appendChild(div);
+		div.appendChild(X);
+	});
+	const closeBtn = document.createElement("button");
+	closeBtn.innerText = "Stäng";
+	closeBtn.id = "editor-close-button";
+	closeBtn.setAttribute(
+		"onclick",
+		`toggleModal(document.getElementById('modal-course-editor-container'))`
+	);
+	editorHTML.appendChild(closeBtn);
+}
 printCourseCards();

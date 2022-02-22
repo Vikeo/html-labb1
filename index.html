@@ -23,6 +23,7 @@
 
         <div onclick="toggleCart(document.getElementById('cart-container'))" id="cart-toggle" class="navbar-item">
             <img src="./images/cart-icon.svg" alt="cart icon" id="cart-icon">
+            <span id="cart-items-counter">0</span>
         </div>
 
         <div onclick="toggleMenu(document.getElementById('hamburger-menu'));" id="hamburger-toggle"
@@ -40,44 +41,23 @@
             <div onclick="navigateToAdmin()" class="hamburger-menu-item">Admin</div>
         </div>
     </div>
-
-    <div id="cart-container" data-state="active">
+    <div id="cart-container" data-state="inactive">
         <ul id="cart">
             <div>Kundvagnen är tom...</div>
         </ul>
     </div>
 
     <div id="content">
-        <button id="modal-button" onclick="toggleModal(document.getElementById('modal-container'))">Öppna
-            kursskapare</button>
-        <div id="modal-container" data-state="inactive">
-            <div id="modal-course-form" class="modal">
-                <form id="course-creator" onsubmit="return false">
-                    <label for="course-id">Course ID</label>
-                    <br>
-                    <input type="text" id="course-id" name="course-id">
-                    <br>
-                    <label for="course-title">Title</label>
-                    <br>
-                    <input type="text" id="course-title" name="course-title">
-                    <br>
-                    <label for="course-description">Description</label>
-                    <br>
-                    <textarea name="course-description" id="course-description" cols="21" rows="4"></textarea>
-                    <br>
-                    <!-- TODO Vill göra så att man kan välja lokalt? -->
-                    <label for="course-image">Image (URL)</label>
-                    <br>
-                    <input type="text" id="course-image" name="course-image">
-                    <br>
-                    <!-- Submit eller bara ett onclick event? -->
-                    <button id="submit-button" onclick="submitCourseForm()">Skapa</button>
-                    <button id="close-button"
-                        onclick="toggleModal(document.getElementById('modal-container'))">Stäng</button>
-                    <!-- <input type="submit" value="Skapa"> -->
-                </form>
-            </div>
-        </div>
+        <h1>Välkommen!</h1>
+        <p>Denna temporära text representerar varken oss, vilka vi är, vart vi kommer från, vad vi har för bakgrund, vad
+            som driver oss eller vem som betalar för dina studier. Allt vi önskar är att du har en sisådär studietid hos
+            oss, och att få kunna dra ihop sköna gäng som man kan plåta lika sköna bilder på som den nedan. Kaffe är
+            sedan juni 2018, på grund av olyckan, en obligatorisk morgondryck här hos oss.
+        </p>
+
+        <img id="student-image" src="./images/students_photo.jpg"
+            alt="Glad bild som visar att WestCoast Education har en bra arbetsmiljö.">
+
         <script src="./scripts/script.js"></script>
         <script src="./scripts/pages.js"></script>
 </body>
