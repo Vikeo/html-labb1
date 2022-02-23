@@ -1,7 +1,5 @@
 function navigateToCourses() {
 	document.getElementById("content").innerHTML = `
-        
-
         <div id="courses-list">
         </div>
         `;

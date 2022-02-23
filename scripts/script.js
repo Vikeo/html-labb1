@@ -175,11 +175,7 @@ function removeCourseFromCart(cartItemId) {
 
 function removeCourseFromCourses(courseId) {
 	const courseToRemove = courses.find((el) => el.id === courseId);
-
-	console.log(courses.indexOf(courseToRemove));
-
 	courses.splice(courses.indexOf(courseToRemove), 1);
-
 	updateEditor();
 }
 
