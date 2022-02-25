@@ -5,7 +5,11 @@ body {
 
 #content {
 	/* margin-top: 83.45px; */
-	margin: 6em 0 0 20px;
+	margin: 6em 20px 0 20px;
+}
+
+#content p {
+	text-align: justify;
 }
 
 #courses-list {
@@ -16,6 +20,7 @@ body {
 
 #student-image {
 	width: 700px;
+	max-width: 80vw;
 }
 /*#region Things in navbar*/
 
@@ -99,6 +104,8 @@ body {
 	width: auto;
 	height: 30px;
 	color: #37e680;
+	filter: invert(63%) sepia(76%) saturate(379%) hue-rotate(92deg)
+		brightness(99%) contrast(101%);
 }
 
 /*#endregion Things in navbar*/
@@ -115,7 +122,7 @@ body {
 	background-color: rgb(193, 215, 235);
 	margin: 10px;
 	width: 20em;
-	height: 16em; /* TODO: Kanske inte ska ha det som auto*/
+	height: 17em; /* TODO: Kanske inte ska ha det som auto*/
 	box-shadow: 2px 3px 7px 1px #231e5075;
 	transition: transform 0.2s ease-out;
 }
@@ -142,6 +149,13 @@ body {
 	display: block;
 	text-align: justify;
 	text-justify: inter-word;
+	overflow: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.card .card-text::-webkit-scrollbar {
+	display: none;
 }
 
 .card .card-add-button {
@@ -158,6 +172,15 @@ body {
 	background-color: #443a99;
 	color: white;
 	cursor: pointer;
+}
+
+.card .card-foot {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding-inline-start: 10%;
+	padding-inline-end: 10%;
 }
 
 .card:hover {
@@ -196,7 +219,7 @@ body {
 
 .menu-transition-in {
 	transform-origin: 0% 0%;
-	transform: translate(-107.2%, 0);
+	transform: translate(-105%, 0);
 	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 
@@ -262,9 +285,9 @@ body {
 	color: #37e680;
 	font-family: "Chakra Petch", sans-serif;
 	border-radius: 3px;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	padding: 0.7em;
-	margin: 1em;
+	margin: 0.5em;
 }
 
 #course-description {
@@ -304,7 +327,7 @@ body {
 }
 
 /* Visas på desktop */
-@media (min-width: 590px) {
+@media (min-width: 665px) {
 	.desktop {
 		position: relative;
 		opacity: 100%;
@@ -317,7 +340,7 @@ body {
 }
 
 /* Visas på mobil */
-@media (max-width: 589px) {
+@media (max-width: 664px) {
 	#hamburger-toggle {
 		opacity: 100%;
 		pointer-events: all;
@@ -338,8 +361,12 @@ body {
 		align-self: center;
 	}
 
+	.card {
+		transform: scale(0.95);
+	}
+
 	/*  tar bort hover-effekten. TODO: Vill jag ha den på mobil eller inte? Behövs scale ändras annars?*/
 	.card:hover {
-		transform: scale(1);
+		transform: scale(0.95);
 	}
 }

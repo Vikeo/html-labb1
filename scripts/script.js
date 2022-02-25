@@ -78,18 +78,25 @@ function submitCourseForm() {
 		(id = document.getElementById("course-id").value),
 		(title = document.getElementById("course-title").value),
 		(description = document.getElementById("course-description").value),
-		(image = document.getElementById("course-image").value)
+		(image = document.getElementById("course-image").value),
+		(length = document.getElementById("course-length").value),
+		(price = document.getElementById("course-price").value)
 	);
 }
 
-function addCourse(id, title, description, image) {
+function addCourse(id, title, description, image, lenght, price) {
 	//Ta in info, lägg till i en ny Course.
 	if (id == "") {
 		return;
 	}
 
+	price = parseInt(price);
+	if (Number.isNaN(price) || price == "") {
+		return;
+	}
+
 	let alreadyExists = false;
-	const newCourse = new Course(id, title, description, image);
+	const newCourse = new Course(id, title, description, image, lenght, price);
 	//TODO Finns nog ett bättre sätt att hoppa ut ur en funktion från en forEach än att använda en bool.
 	courses.forEach((course) => {
 		if (course.id == newCourse.id) {
@@ -122,28 +129,57 @@ function printCourseCards(coursesArray = []) {
 		const div = document.createElement("div");
 		const img = document.createElement("img");
 		const h1 = document.createElement("h1");
-		const p = document.createElement("p");
+		const descriptionP = document.createElement("p");
 		const button = document.createElement("button");
+
+		const footDiv = document.createElement("div");
+
+		const priceP = document.createElement("p");
+		const lenghtP = document.createElement("p");
 
 		div.classList.add("card");
 		img.classList.add("card-image");
 		h1.classList.add("card-title");
-		p.classList.add("card-text");
-		button.classList.add("card-add-button");
+		descriptionP.classList.add("card-text");
 
-		img.src = course.image;
+		footDiv.classList.add("card-foot");
+
+		button.classList.add("card-add-button");
+		priceP.classList.add("card-price");
+		lenghtP.classList.add("card-lenght");
+
+		if (course.image == "") {
+			img.src = "./images/default.jpg";
+		} else {
+			img.src = course.image;
+		}
+
 		img.alt = "card-image";
 		h1.innerText = course.title + ` (${course.id})`;
-		p.innerText = course.description;
+		descriptionP.innerText = course.description;
 		button.innerText = "Lägg till";
+		priceP.innerText = `${course.price} SEK`;
+		lenghtP.innerText = course.length;
 
 		//Lägger till funktionen för att lägga till boken i kundvagnen.
-		button.setAttribute("onclick", `addCourseToCart("${course.id}")`);
+		//button.setAttribute("onclick", `addCourseToCart("${course.id}")`);
+		button.onclick = function (event) {
+			// console.log(event);
+			// const sample = document.createElement("h1");
+			// sample.innerText = "lmao";
+			// event.target.parentElement.appendChild(sample);
+
+			addCourseToCart(`${course.id}`);
+		}; //Gör samma sak som ovan, fast lägger inte till i HTML.
 
 		div.appendChild(img);
 		div.appendChild(h1);
-		div.appendChild(p);
-		div.appendChild(button);
+		div.appendChild(descriptionP);
+		footDiv.appendChild(priceP);
+		footDiv.appendChild(button);
+		footDiv.appendChild(lenghtP);
+
+		div.appendChild(footDiv);
 
 		coursesHTML.appendChild(div);
 	});
@@ -183,6 +219,8 @@ function updateCart() {
 	let itemCounter = 0;
 	const cartItemCounter = document.getElementById("cart-items-counter");
 	const cartHtml = document.getElementById("cart");
+	const totalP = document.createElement("p");
+	let totalPrice = 0;
 	cartHtml.innerHTML = ``;
 
 	if (cart.length <= 0) {
@@ -196,14 +234,19 @@ function updateCart() {
 	cart.forEach((cartItem) => {
 		const div = document.createElement("div");
 		div.classList.add("cart-item");
-		div.innerText = `${cartItem.title} (${cartItem.id})`;
+		div.innerText = `${cartItem.title} (${cartItem.id}) - ${cartItem.price}:-`;
 		const X = document.createElement("button");
 		X.innerText = "X";
 		X.setAttribute("onclick", `removeCourseFromCart("${cartItem.id}")`);
 		cartHtml.appendChild(div);
 		div.appendChild(X);
 		itemCounter++;
+		totalPrice = totalPrice + parseInt(cartItem.price);
 	});
+
+	totalP.innerText = totalPrice;
+
+	cartHtml.appendChild(totalP);
 
 	cartItemCounter.style.display = "flex";
 	cartItemCounter.innerHTML = itemCounter;
@@ -219,7 +262,6 @@ function updateEditor() {
 			"Här fanns det tydligen inga kurser... Testa och lägga till någon!";
 		editorHTML.appendChild(tempDiv);
 	}
-	console.log("111");
 
 	courses.forEach((course) => {
 		const div = document.createElement("div");
