@@ -111,6 +111,7 @@ function addCourse(id, title, description, image, lenght, price) {
 	}
 	courses.push(newCourse);
 	console.log(courses);
+	window.alert("Kursen skapades");
 	printCourseCards();
 	updateEditor();
 }
@@ -220,6 +221,7 @@ function updateCart() {
 	const cartItemCounter = document.getElementById("cart-items-counter");
 	const cartHtml = document.getElementById("cart");
 	const totalP = document.createElement("p");
+	const buyBtn = document.createElement("button");
 	let totalPrice = 0;
 	cartHtml.innerHTML = ``;
 
@@ -234,19 +236,27 @@ function updateCart() {
 	cart.forEach((cartItem) => {
 		const div = document.createElement("div");
 		div.classList.add("cart-item");
-		div.innerText = `${cartItem.title} (${cartItem.id}) - ${cartItem.price}:-`;
-		const X = document.createElement("button");
-		X.innerText = "X";
-		X.setAttribute("onclick", `removeCourseFromCart("${cartItem.id}")`);
+		div.innerHTML = `${cartItem.title} (${cartItem.id}) <br> ${cartItem.price}:-`;
+		const removeBtn = document.createElement("button");
+		removeBtn.innerText = "X";
+		removeBtn.setAttribute("onclick", `removeCourseFromCart("${cartItem.id}")`);
 		cartHtml.appendChild(div);
-		div.appendChild(X);
+		div.appendChild(removeBtn);
 		itemCounter++;
 		totalPrice = totalPrice + parseInt(cartItem.price);
 	});
 
-	totalP.innerText = totalPrice;
+	buyBtn.classList.add("cart-buy-btn");
+	buyBtn.innerText = "Köp";
 
+	buyBtn.onclick = function () {
+		buyItemsInCart();
+	};
+
+	totalP.innerHTML = `Total summa: <br> ${totalPrice} SEK`;
+	const tempString = `Total summa: ${totalPrice} SEK`;
 	cartHtml.appendChild(totalP);
+	cartHtml.appendChild(buyBtn);
 
 	cartItemCounter.style.display = "flex";
 	cartItemCounter.innerHTML = itemCounter;
@@ -286,4 +296,13 @@ function updateEditor() {
 	);
 	editorHTML.appendChild(closeBtn);
 }
+
+function buyItemsInCart() {
+	cart.forEach((cartItem) => {
+		removeCourseFromCart(cartItem.id);
+	});
+
+	window.alert("Kurserna köpta!");
+}
+
 printCourseCards();

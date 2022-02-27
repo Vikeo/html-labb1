@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Pridi:wght@300&display=swap"
+        rel="stylesheet">
     <link rel="shortcut icon" href="./images/icon.png" type="image/x-icon">
     <title>WestCoast Education</title>
 </head>
@@ -49,16 +50,34 @@
     </div>
 
     <div id="content">
-        <h1>Välkommen!</h1>
-        <p>Denna temporära text representerar varken oss, vilka vi är, vart vi kommer från, vad vi har för bakgrund, vad
-            som driver oss eller vem som betalar för dina studier. Allt vi önskar är att du har en sisådär studietid hos
-            oss, och att få kunna dra ihop sköna gäng som man kan plåta lika sköna bilder på som den nedan. Kaffe är
-            sedan juni 2018, på grund av olyckan, en obligatorisk morgondryck här hos oss.
-        </p>
-        <img id="student-image" src="./images/students_photo.jpg"
-            alt="Glad bild som visar att WestCoast Education har en bra arbetsmiljö.">
-        <script src="./scripts/script.js"></script>
-        <script src="./scripts/pages.js"></script>
+        <div class="intro-content-container">
+            <h1 id="content-h1" class="intro-item">Välkommen till WestCoast Education!</h1>
+            <div class="p-container intro-item">
+                <p class="content-p">
+                    Vi är utbildningsföretaget på västkusten! Vårt mål är att få dig som student att komma ut i
+                    IT-branchen
+                    med
+                    goda kunskaper och erfarenheter.
+                </p>
+                <p class="content-p">
+                    Vårt utbud av kursers täcker allt inom IT-området, från frontend till backend. Ta en titt själv vet
+                    ja!
+                </p>
+
+            </div>
+            <img id="student-image" class="intro-item" src="./images/students_photo.jpg"
+                alt="Glad bild som visar att WestCoast Education har en bra arbetsmiljö.">
+        </div>
+    </div>
+
+
+
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/pages.js"></script>
+    <div class="footer">
+        <p>WestCoast Education™ 2022® ©</p>
+    </div>
+    <div id="footer-margin"></div>
 
 </body>
 

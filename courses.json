@@ -1,18 +1,50 @@
 [
 	{
-		"id": "S22HT",
-		"title": "Sälkurs",
-		"description": "Lär dig om västkustens alla olika sälar i denna sälkurs! Här kommer du få rädda, mata och klappa massor av fina och tjocka sälar.",
-		"image": "./images/seal.jpg",
-		"length": "3 months",
-		"price": "30"
+		"id": "FE22HT",
+		"title": "Front-end utveckling",
+		"description": "Ogillar du när en hemsida inte är responsiv? Då är detta kursen för dig!",
+		"image": "https://images.pexels.com/photos/52608/pexels-photo-52608.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=188&w=315",
+		"length": "2 år",
+		"price": "100"
 	},
 	{
-		"id": "H22HT",
-		"title": "Hjälpkurs",
-		"description": "VI hjälper DIG med ALLT! Wow va?!",
-		"image": "./images/seal.jpg",
-		"length": "1 week",
-		"price": "9999"
+		"id": "BE22HT",
+		"title": "Back-end utveckling",
+		"description": "Om du gillar att grotta ner dig i kod så kommer denna .NET baserade kurs vara perfekt för dig!",
+		"image": "https://images.pexels.com/photos/3861952/pexels-photo-3861952.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=188&w=315",
+		"length": "2 år",
+		"price": "400"
+	},
+	{
+		"id": "IP22HT",
+		"title": "IT-projektledning",
+		"description": "Lär dig hur man sätter upp kompenent team av utvecklare samt hur man uppdaterat sin dator till Windows 11.",
+		"image": "https://images.pexels.com/photos/874242/pexels-photo-874242.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=188&w=315",
+		"length": "1 vecka",
+		"price": "1000"
+	},
+	{
+		"id": "FS22HT",
+		"title": ".NET Fullstack-utvecklare",
+		"description": "Här lär du dig faktiskt det mesta. En fullstack utvecklare skall kunna utveckla både front- och back-end.",
+		"image": "https://images.pexels.com/photos/313690/pexels-photo-313690.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=188&w=315",
+		"length": "1 termin",
+		"price": "3000"
+	},
+	{
+		"id": "CL22HT",
+		"title": "Cloud utveckling",
+		"description": "Cloud-utvecklare är extremt eftersökta, så ta chansen att lära dig mer om det nu.",
+		"image": "https://images.pexels.com/photos/6964102/pexels-photo-6964102.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=188&w=315",
+		"length": "2 år",
+		"price": "420"
+	},
+	{
+		"id": "S22HT",
+		"title": "Sälkurs västkustens egna Gudrun",
+		"description": "Lär dig om västkustens alla olika sälar i denna sälkurs! Här kommer du få rädda, mata och klappa massor av fina och tjocka sälar. På fredagar bjuder Gudrun på fika, alla är välkomna!",
+		"image": "./images/seal.jpg?auto=compress&cs=tinysrgb&dpr=3&h=188&w=315",
+		"length": "52 tors-, fredagar",
+		"price": "30"
 	}
 ]
