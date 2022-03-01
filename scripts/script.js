@@ -298,10 +298,8 @@ function updateEditor() {
 }
 
 function buyItemsInCart() {
-	cart.forEach((cartItem) => {
-		removeCourseFromCart(cartItem.id);
-	});
-
+	cart.splice(0, cart.length);
+	updateCart();
 	window.alert("Kurserna köpta!");
 }
 
