@@ -92,6 +92,7 @@ function addCourse(id, title, description, image, lenght, price) {
 
 	price = parseInt(price);
 	if (Number.isNaN(price) || price == "") {
+		alert("Kurspris måste börja med en siffra.");
 		return;
 	}
 
